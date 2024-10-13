@@ -36,24 +36,13 @@ function makeCalculator() {
     },
 
     operate(operation, value) {
-      switch (operation) {
-        case this.add:
-          this.add(value);
-          break;
-        case this.subtract:
-          this.subtract(value);
-          break;
-        case this.multiply:
-          this.multiply(value);
-          break;
-        case this.divide:
-          this.divide(value);
-          break;
-        default:
-          throw new Error('Unknown operation');
-      }
+      if (typeof operation === 'function') {
+        operation.call(this, value);
 
-      return this;
+        return this;
+      } else {
+        throw new Error('Callback is not a function');
+      }
     },
 
     reset() {

@@ -36,10 +36,6 @@ function makeCalculator() {
     },
 
     operate(operation, value) {
-      if (value === undefined) {
-        throw new Error('No value given');
-      }
-
       switch (operation) {
         case this.add:
           this.add(value);
